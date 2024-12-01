@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+class Solution {
+  public:
+    // Function to find the first non-repeating character in a string.
+    char nonRepeatingChar(string &s) {
+        // Your code here
+        unordered_map<char,int>arr;
+        for(auto i : s){
+            arr[i]++;
+        }
+        for(auto i : s){
+            if(arr[i] == 1) return i;
+        }
+        return '$';
+    }
+};
