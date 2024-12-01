@@ -13,6 +13,6 @@ Explanation: All the characters in the given string are repeating.
 Solution:
 
 Used an unordered map to store the character and its occurence.
-TC : O(2N) ~ O(N) <br />
+TC : O(2N) ~ O(N) 
 SC : O(k) (where k is the number of unique characters in the string since we are using the map to store the characters) 
 
