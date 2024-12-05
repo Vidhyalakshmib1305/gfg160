@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    // Function to find hIndex
+    int hIndex(vector<int>& citations) {
+        // code here
+        sort(citations.begin(), citations.end());
+        int left = 0, right = citations.size()-1;
+        int n = citations.size();
+        int ans = 0;
+        while(left <= right){
+            int mid = (left + right) / 2;
+            int idx = n - mid;
+            if(citations[mid] >= idx){
+                ans = idx;
+                right = mid - 1;
+            }
+            else{
+                left = mid + 1;
+            }
+        }
+        return ans;
+    }
+};
