@@ -1,0 +1,23 @@
+class Solution {
+  public:
+    vector<int> intersectionWithDuplicates(vector<int>& a, vector<int>& b) {
+        
+        unordered_set<int>freqA, ans;
+        
+        
+        for(int it : a){
+            freqA.insert(it);
+        }
+        
+        
+        for(int num: b){
+            if(freqA.find(num) != freqA.end()){
+                ans.insert(num);
+            }
+        }
+        
+        vector<int>res(ans.begin(), ans.end());
+        
+        return res;
+    }
+};
