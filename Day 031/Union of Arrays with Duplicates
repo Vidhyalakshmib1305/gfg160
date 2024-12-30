@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    // Function to return the count of number of elements in union of two arrays.
+    int findUnion(vector<int>& a, vector<int>& b) {
+        set<int>stA;
+        
+        for(int num : a){
+            stA.insert(num);
+        }
+        
+        for(int num : b){
+            if(stA.find(num) == stA.end()){
+                stA.insert(num);
+            }
+        }
+        
+        return stA.size();
+        
+        
+    }
+};
