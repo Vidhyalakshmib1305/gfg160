@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    long subarrayXor(vector<int> &arr, int k) {
+        
+        int cnt=0;
+        int n = arr.size();
+        unordered_map<int,int>mpp;
+        int xorr = 0;
+        mpp[xorr] = 1;
+        
+        for(int i=0; i<n; i++){
+            xorr = xorr ^ arr[i];
+            int xr = xorr ^ k;
+            
+            cnt += mpp[xr];
+            mpp[xorr]++;
+        }
+        return cnt;
+    }
+};
