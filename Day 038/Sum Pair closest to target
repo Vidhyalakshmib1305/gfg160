@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    vector<int> sumClosest(vector<int>& arr, int target) {
+        sort(arr.begin(), arr.end());
+        
+        int n = arr.size();
+        vector<int>ans;
+        int diff = INT_MAX;
+        
+        if(n == 1) return ans;
+        
+        int low = 0, high = n-1;
+        while(low < high){
+            int sum = arr[low] + arr[high];
+            int curr = abs(arr[low] - arr[high]);
+            
+            if(abs(target - sum) < diff){
+                diff = min(abs(target - sum), diff);
+                ans = {arr[low], arr[high]};
+            }
+            
+            if(sum < target) low++;
+            else if(sum > target) high--;
+            else return ans;
+        }
+        
+        return ans;
+        
+    }
+};
