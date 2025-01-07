@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution{
+  public:
+      int countPairs(vector<int> &arr, int target){
+                int n = arr.size();
+                int ans = 0;
+
+                int i = 0, j = n-1;
+                while(i < j){
+                    int sum = arr[i] + arr[j];
+
+                    if(sum > target){
+                          j--;
+                    }
+                    else if(sum < target){
+                          i++;
+                    }
+                    else{
+                        int cnt1 = 0, cnt2 = 0;
+                        int el1 = arr[i], el2 = arr[j];
+
+                        while(i < j && arr[i] == el1){
+                              cnt1++;
+                              i++;
+                        }
+
+                        while(i < j && arr[j] == el2){
+                              cnt2++;
+                              j--;
+                        }
+
+                        if(el1 == el2){
+                              ans += (cnt1) * (cnt1 - 1) / 2;
+                        }
+                        else{
+                              ans += (cnt1 * cnt2);
+                        }
+
+                    }
+                }
+                return ans;
+      }
+};
