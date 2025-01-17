@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    vector<int> productExceptSelf(vector<int>& arr) {
+        
+        int n = arr.size();
+        
+        int cnt0 = 0;
+        int prdt = 1;
+        
+        for(int i=0; i<n; i++){
+            if(arr[i] == 0) cnt0++;
+            else prdt *= arr[i];
+        }
+        
+        for(int i=0; i<n; i++){
+            if(cnt0 > 1) arr[i] = 0;
+            else if(cnt0 == 1 && arr[i] == 0) arr[i] = prdt;
+            else if(cnt0 == 1 && arr[i] != 0) arr[i] = 0;
+            else{
+                int temp = prdt / arr[i];
+                arr[i] = temp;
+            }
+        }
+        return arr;
+    }
+};
