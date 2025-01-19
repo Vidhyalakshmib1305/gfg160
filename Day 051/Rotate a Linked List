@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct Node {
+    int data;
+    struct Node *next;
+    Node(int x) {
+        data = x;
+        next = NULL;
+    }
+};
+
+class Solution {
+  public:
+    Node* rotate(Node* head, int k) {
+        
+        if(head == NULL || k== 0) return head;
+        Node* tail = head;
+        int len = 1;
+        
+        while(tail -> next != NULL){
+            tail = tail -> next;
+            len++;
+        }
+        
+        if(k % len ==0) return head;
+        
+        k = k % len;
+        
+        Node* temp = NULL;
+        
+        while(k > 0){
+            tail -> next = head;
+            tail = tail -> next;
+            temp = head -> next;
+            head -> next = NULL;
+            head = temp;
+            k--;
+        }
+        
+        return head;
+        
+        
+    }
+};
