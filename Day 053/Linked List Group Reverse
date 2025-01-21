@@ -1,0 +1,32 @@
+struct node
+    {
+        int data;
+        struct Node* next;
+
+        Node(int x){
+            data = x;
+            next = NULL;
+        }
+
+    }*head;
+
+class Solution {
+  public:
+    Node *reverseKGroup(Node *head, int k) {
+        Node *prev = NULL, *curr = head, *last = curr -> next;
+        
+        int cnt = 0;
+        
+        while(cnt < k && curr){
+            last = curr -> next;
+            curr -> next = prev;
+            prev = curr;
+            curr = last;
+            cnt++;
+        }
+        
+        if(last) head -> next = reverseKGroup(last, k);
+        
+        return prev;
+    }
+};
